@@ -1,8 +1,30 @@
 {
   "name": "docker-demo",
   "version": "1.0.0",
+  "description": "A simple Node.js Docker CI/CD demo with Jenkins pipeline and Jest tests",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
-  }
+    "start": "node app.js",
+    "test": "jest --coverage --runInBand --reporters=default --reporters=jest-junit",
+    "test:watch": "jest --watch"
+  },
+  "devDependencies": {
+    "jest": "^30.2.0",
+    "jest-junit": "^16.0.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "reporters": [
+      "default",
+      [
+        "jest-junit",
+        {
+          "outputDirectory": "./test-results",
+          "outputName": "results.xml"
+        }
+      ]
+    ]
+  },
+  "author": "Your Name",
+  "license": "MIT"
 }
