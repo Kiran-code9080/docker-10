@@ -48,10 +48,11 @@ const server = http.createServer((req, res) => {
   res.end(htmlContent);
 });
 
-// Start server
-server.listen(PORT, () => {
-  console.log(`✅ Server running at http://localhost:${PORT}`);
-});
+// Start the server only when app.js is run directly (not during tests)
+if (require.main === module) {
+  server.listen(PORT, () => {
+    console.log(`✅ Server running at http://localhost:${PORT}`);
+  });
+}
 
-// Export server for testing
 module.exports = server;
