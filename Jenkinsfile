@@ -10,19 +10,19 @@ pipeline {
 
     stage('Install') {
       steps {
-        sh 'npm install'
+        bat 'npm install'
       }
     }
 
     stage('Unit Tests') {
       steps {
-        sh 'npm test'
+        bat 'npm test'
       }
     }
 
     stage('Docker Build') {
       steps {
-        sh 'docker build -t docker-demo:latest .'
+        bat 'docker build -t docker-demo:latest .'
       }
     }
   }
@@ -36,3 +36,4 @@ pipeline {
     }
   }
 }
+
